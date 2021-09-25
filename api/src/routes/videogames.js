@@ -22,16 +22,8 @@ videogamesRouter.get("/", async (req, res) => {
       let result = [];
 
       for (let i = 0; i < 15; i++) {
-        const { name, platforms, released, background_image, rating, genres } =
-          data[i];
-        const gameData = {
-          name,
-          platforms,
-          released,
-          background_image,
-          rating,
-          genres,
-        };
+        const { name, background_image, genres } = data[i];
+        const gameData = { name, background_image, genres };
         result.push(gameData);
       }
       res.send(result);
@@ -45,17 +37,9 @@ videogamesRouter.get("/", async (req, res) => {
       let result = [];
 
       //max 20
-      for (let i = 0; i < 20; i++) {
-        const { name, platforms, released, background_image, rating, genres } =
-          data[i];
-        const gameData = {
-          name,
-          platforms,
-          released,
-          background_image,
-          rating,
-          genres,
-        };
+      for (let i = 0; i < 15; i++) {
+        const { name, background_image, genres } = data[i];
+        const gameData = { name, background_image, genres };
         result.push(gameData);
       }
       res.send(result);
