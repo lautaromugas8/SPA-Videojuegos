@@ -56,7 +56,7 @@ videogameRouter.post("/", async (req, res) => {
 
     res.send("Videogame added to database");
   } catch (error) {
-    res.send(error);
+    res.send(error.parent.detail);
   }
 });
 
