@@ -1,0 +1,5 @@
+.games-list {
+  width: 66%;
+  display: flex;
+  flex-wrap: wrap;
+}

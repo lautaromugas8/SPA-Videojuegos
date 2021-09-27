@@ -1,0 +1,20 @@
+.game {
+  flex: 1 0 33%;
+  width: auto;
+  height: auto;
+  text-align: center;
+  border: 1px solid black;
+  margin: 1px;
+}
+
+.game img {
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+  transition: 0.5s ease;
+  opacity: 0.85;
+}
+
+.game img:hover {
+  opacity: 1;
+}
