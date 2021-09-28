@@ -1,0 +1,14 @@
+.home {
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+  grid-template-rows: auto;
+  background-image: url(../../images/joystick2.jpg);
+  position: absolute;
+  background-size: contain;
+  width: 99vw;
+}
+
+.home h1 {
+  margin-top: 60px;
+  color: white;
+}

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function LandingButton() {
   return (
     <Link to="/home">
-      <button className="button">Ingresar</button>
+      <button className="button">INGRESAR</button>
     </Link>
   );
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
+import "./SearchBar.css";
 
 function SearchBar() {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ function SearchBar() {
   return (
     <form className="search-bar" onSubmit={handleSubmit}>
       <input type="search" placeholder="Search for videogames..." name="name" />
-      <button>Search</button>
+      <button>Buscar</button>
     </form>
   );
 }

@@ -1,0 +1,22 @@
+.sidebar {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+}
+
+.sidebar nav {
+  background-color: white;
+}
+
+#home {
+  list-style-image: url(../../images/iconfinderHome.ico);
+}
+
+#crear {
+  list-style-image: url(../../images/inconfinderGame.ico);
+}
+
+#about {
+  list-style-image: url(../../images/iconfinderAbout.ico);
+}

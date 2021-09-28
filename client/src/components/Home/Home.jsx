@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import SearchBar from "./SearchBar";
 import GameList from "./GameList";
+import "./Home.css";
+import Sidebar from "./Sidebar";
 
 function Home() {
   const dispatch = useDispatch();
@@ -17,8 +18,8 @@ function Home() {
   }, [dispatch]);
 
   return (
-    <div>
-      <SearchBar />
+    <div className="home">
+      <Sidebar />
       {games.length > 0 ? <GameList /> : <h1>Loading...</h1>}
     </div>
   );

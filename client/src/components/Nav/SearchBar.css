@@ -1,0 +1,13 @@
+.search-bar {
+  background-color: gray;
+  border: 1px solid black;
+}
+
+.search-bar input {
+  margin-right: 3px;
+  padding: 5px;
+}
+
+.search-bar button {
+  padding: 5px;
+}
