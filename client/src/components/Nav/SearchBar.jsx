@@ -1,18 +1,14 @@
 import React from "react";
-import axios from "axios";
 import { useDispatch } from "react-redux";
 import "./SearchBar.css";
+import { searchGame } from "../../redux/actions";
 
 function SearchBar() {
   const dispatch = useDispatch();
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const response = await axios.get(
-      `http://localhost:3001/videogames?name=${e.target[0].value}`
-    );
-    dispatch({ type: "reset" });
-    dispatch({ type: "search", payload: response.data });
+    dispatch(searchGame(e));
   }
 
   return (

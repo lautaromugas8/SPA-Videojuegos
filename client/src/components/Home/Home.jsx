@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import axios from "axios";
+import { getAllGames } from "../../redux/actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import GameList from "./GameList";
 import "./Home.css";
@@ -10,11 +10,7 @@ function Home() {
   const games = useSelector((state) => state.games);
 
   useEffect(() => {
-    async function fetchGames() {
-      const response = await axios.get("http://localhost:3001/videogames");
-      dispatch({ type: "get_all_games", payload: response.data });
-    }
-    fetchGames();
+    dispatch(getAllGames());
   }, [dispatch]);
 
   return (
