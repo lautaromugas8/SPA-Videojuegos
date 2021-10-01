@@ -18,7 +18,6 @@ export function searchGame(e) {
     const response = await axios.get(
       `http://localhost:3001/videogames?name=${e.target[0].value}`
     );
-    dispatch({ type: reset });
     dispatch({ type: search, payload: response.data });
   };
 }
@@ -48,7 +47,14 @@ export function setGamesPerPage(num, games) {
       return { type: set_games_on_page, payload: games[0].slice(60, 75) };
     case 6:
       return { type: set_games_on_page, payload: games[0].slice(75, 90) };
+    case "creados":
+      // console.log(num);
+      return { type: set_games_on_page, payload: games };
     default:
       return;
   }
+}
+
+export function detailUnmount() {
+  return { type: reset };
 }

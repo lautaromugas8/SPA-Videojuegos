@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getGameDetail } from "../../redux/actions/index";
+import { detailUnmount, getGameDetail } from "../../redux/actions/index";
 import defaultImage from "../../images/default-placeholder.png";
 import "./Detail.css";
 
@@ -29,6 +29,7 @@ function Detail() {
 
   useEffect(() => {
     dispatch(getGameDetail(id));
+    return () => dispatch(detailUnmount());
   }, [dispatch, id]);
 
   if (Object.keys(game).length > 1) {

@@ -11,12 +11,21 @@ function SearchBar() {
   async function handleSubmit(e) {
     e.preventDefault();
     dispatch(searchGame(e));
+    if (document.getElementsByClassName("pagination")[0]) {
+      document.getElementsByClassName("pagination")[0].className =
+        "nopagination";
+    }
     history.push("/home");
   }
 
   return (
     <form className="search-bar" onSubmit={handleSubmit}>
-      <input type="search" placeholder="Buscar videojuegos..." name="name" />
+      <input
+        type="search"
+        placeholder="Buscar videojuegos..."
+        name="name"
+        required
+      />
       <button>Buscar</button>
     </form>
   );

@@ -1,21 +1,21 @@
-.sidebar {
+.nav-buttons {
   display: flex;
   margin: 0;
   padding: 0 30px;
   font-family: "Noto Sans Display", sans-serif;
 }
 
-.sidebar li {
+.nav-buttons li {
   display: block;
   padding: 0 16px;
   color: lightyellow;
 }
 
-.sidebar a {
+.nav-buttons a {
   text-decoration: none;
 }
 
-.sidebar a:hover {
+.nav-buttons a:hover {
   color: lightyellow;
   background-color: #111111;
   text-decoration: underline;

@@ -17,17 +17,12 @@ function reducer(state = initialState, action) {
     case search:
       return {
         ...state,
-        gamesOnPage: [...state.games, action.payload],
+        gamesOnPage: [action.payload],
       };
     case get_all_games:
       return {
         ...state,
-        games: [...state.games, action.payload],
-      };
-    case reset:
-      return {
-        ...state,
-        gamesOnPage: [],
+        games: [action.payload],
       };
     case get_game_detail:
       return {
@@ -38,6 +33,11 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         gamesOnPage: [action.payload],
+      };
+    case reset:
+      return {
+        ...state,
+        gameDetail: {},
       };
     default:
       return state;

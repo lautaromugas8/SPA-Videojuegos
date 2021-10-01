@@ -32,6 +32,7 @@ videogamesRouter.get("/", async (req, res) => {
           result.push({
             id: v.dataValues.id,
             name: v.dataValues.name,
+            rating: v.dataValues.rating,
             genres: v.dataValues.genres.map((g) => {
               return { id: g.dataValues.id, name: g.dataValues.name };
             }),
@@ -49,8 +50,15 @@ videogamesRouter.get("/", async (req, res) => {
       if (data.length < 1) return res.send("No existe ningun videojuego");
 
       for (let i = 0; i < 15 - DBGames.length; i++) {
-        const { id, name, background_image, genres } = data[i];
-        const gameData = { id, name, background_image, genres };
+        const { id, name, background_image, genres, rating, added } = data[i];
+        const gameData = {
+          id,
+          name,
+          background_image,
+          genres,
+          rating,
+          added,
+        };
         result.push(gameData);
       }
       res.send(result);
@@ -69,6 +77,7 @@ videogamesRouter.get("/", async (req, res) => {
           result.push({
             id: v.dataValues.id,
             name: v.dataValues.name,
+            rating: v.dataValues.rating,
             genres: v.dataValues.genres.map((g) => {
               return { id: g.dataValues.id, name: g.dataValues.name };
             }),
@@ -82,9 +91,16 @@ videogamesRouter.get("/", async (req, res) => {
       let i = 0;
       while (result.length < 100) {
         for (let i = 0; i < 20 - DBGames.length; i++) {
-          const { id, name, background_image, genres } =
+          const { id, name, background_image, genres, rating, added } =
             response.data.results[i];
-          const gameData = { id, name, background_image, genres };
+          const gameData = {
+            id,
+            name,
+            background_image,
+            genres,
+            rating,
+            added,
+          };
           result.push(gameData);
         }
         if (response.data.next) {

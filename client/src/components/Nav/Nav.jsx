@@ -1,12 +1,12 @@
 import React from "react";
 import SearchBar from "./SearchBar";
 import "./Nav.css";
-import Sidebar from "./Sidebar";
+import NavButtons from "./NavButtons";
 
 function Nav() {
   return (
     <nav className="nav">
-      <Sidebar />
+      <NavButtons />
       <SearchBar />
     </nav>
   );
