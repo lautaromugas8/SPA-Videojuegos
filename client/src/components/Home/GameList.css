@@ -1,6 +1,6 @@
 .games-list {
-  margin: 10px;
-  margin-top: 60px;
+  width: 75%;
+  margin: 10px auto auto auto;
   padding: 10px;
   justify-items: center;
   display: grid;
@@ -8,4 +8,8 @@
   grid-template-rows: auto;
   column-gap: 10px;
   row-gap: 10px;
+}
+
+.games-list a {
+  text-decoration: none;
 }

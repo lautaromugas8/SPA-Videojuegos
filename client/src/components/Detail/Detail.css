@@ -1,0 +1,52 @@
+.detail-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  justify-content: center;
+  justify-items: center;
+  margin: 60px auto auto auto;
+  width: 75%;
+  height: fit-content;
+  overflow: hidden;
+  border: 5px solid #c5c6c7;
+  grid-gap: 5px;
+  background-color: #c5c6c7;
+}
+
+.detail-container div {
+  background-color: #1f2833;
+  width: 100%;
+  text-align: center;
+}
+
+.detail-container div p {
+  font-family: "Noto Sans Display", sans-serif;
+  color: #66fcf1;
+}
+
+.detail-description {
+  font-family: "Noto Sans Display", sans-serif;
+  font-style: italic;
+  color: #66fcf1;
+}
+
+.detail-description p {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.detail-image-container {
+  overflow: hidden;
+}
+
+.detail-image {
+  width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  object-position: 50%;
+}
+
+.detail-image-default {
+  height: 150px;
+  width: 150px;
+}

@@ -76,22 +76,26 @@ videogamesRouter.get("/", async (req, res) => {
         });
       }
 
-      const response = await axios.get(
+      let response = await axios.get(
         `https://api.rawg.io/api/games?key=${API_KEY}`
       );
-
-      const data = await response.data.results;
-
-      //max 20
-      for (let i = 0; i < 15 - DBGames.length; i++) {
-        const { id, name, background_image, genres } = data[i];
-        const gameData = { id, name, background_image, genres };
-        result.push(gameData);
+      let i = 0;
+      while (result.length < 100) {
+        for (let i = 0; i < 20 - DBGames.length; i++) {
+          const { id, name, background_image, genres } =
+            response.data.results[i];
+          const gameData = { id, name, background_image, genres };
+          result.push(gameData);
+        }
+        if (response.data.next) {
+          const data = await axios.get(response.data.next);
+          response = data;
+        }
       }
       res.send(result);
     }
   } catch (error) {
-    res.send(error.response.data);
+    res.send(error.response);
   }
 });
 

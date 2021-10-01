@@ -2,7 +2,7 @@
   text-align: center;
   border: 2px solid lightyellow;
   width: 300px;
-  height: 400px;
+  height: 410px;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.719);
 }
@@ -26,6 +26,7 @@
 
 .game h4 {
   color: lightyellow;
+  font-family: "Noto Sans Display", sans-serif;
 }
 
 .game h4:hover {
@@ -34,4 +35,5 @@
 
 .game p {
   color: lightyellow;
+  font-family: "Noto Sans Display", sans-serif;
 }

@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { getAllGames } from "../../redux/actions/index";
+import { getAllGames, setGamesPerPage } from "../../redux/actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import GameList from "./GameList";
 import "./Home.css";
-import Sidebar from "./Sidebar";
+import Pagination from "./Pagination";
 
 function Home() {
   const dispatch = useDispatch();
@@ -13,10 +13,14 @@ function Home() {
     dispatch(getAllGames());
   }, [dispatch]);
 
+  if (games.length > 0) dispatch(setGamesPerPage(1, games));
+
   return (
-    <div className="home">
-      <Sidebar />
-      {games.length > 0 ? <GameList /> : <h1>Loading...</h1>}
+    <div>
+      <Pagination />
+      <div className="home">
+        {games.length > 0 ? <GameList /> : <h1>Loading...</h1>}
+      </div>
     </div>
   );
 }
