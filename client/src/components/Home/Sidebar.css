@@ -1,0 +1,21 @@
+.sidebar {
+  background-color: #1f2833;
+  width: min-content;
+  position: absolute;
+  z-index: 1;
+  padding: 5px;
+  font-family: "Noto Sans Display", "sans-serif";
+}
+
+.sidebar ul li {
+  color: lightyellow;
+  list-style: square;
+}
+
+.sidebar li input:hover {
+  cursor: pointer;
+}
+
+.sidebar li select:hover {
+  cursor: pointer;
+}

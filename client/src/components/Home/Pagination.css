@@ -1,7 +1,13 @@
 .pagination {
   display: flex;
+  width: fit-content;
   justify-content: center;
-  margin-top: 70px;
+  margin: 70px auto 0;
+  background-color: #1f2833;
+}
+
+.pagination button {
+  margin: 3px;
 }
 
 .pagination button:hover {
@@ -10,7 +16,8 @@
 
 .nopagination {
   display: flex;
+  width: fit-content;
   justify-content: center;
-  margin-top: 70px;
+  margin: 70px auto 0;
   opacity: 0;
 }

@@ -4,10 +4,12 @@ import {
   reset,
   get_game_detail,
   set_games_on_page,
+  set_filtered_games,
 } from "../actions";
 
 const initialState = {
   games: [],
+  filteredGames: [],
   gamesOnPage: [],
   gameDetail: {},
 };
@@ -38,6 +40,12 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         gameDetail: {},
+        filteredGames: [],
+      };
+    case set_filtered_games:
+      return {
+        ...state,
+        filteredGames: action.payload,
       };
     default:
       return state;

@@ -1,6 +1,11 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setGamesPerPage } from "../../redux/actions";
+import {
+  resetFilteredGames,
+  setFilteredGames,
+  setGamesPerPage,
+} from "../../redux/actions";
+import "./Sidebar.css";
 
 function Sidebar() {
   const games = useSelector((state) => state.games);
@@ -63,15 +68,29 @@ function Sidebar() {
 
   function genreSelect(e) {
     const index = e.target.options.selectedIndex;
-    const filtered = games[0].filter((g) =>
-      g.genres.some((gen) => gen.name === e.target.options[index].value)
-    );
-    console.log(filtered);
+    if (index === 0) {
+      games[0].sort((a, b) => {
+        const ar = a.hasOwnProperty("added"),
+          br = b.hasOwnProperty("added");
+        if (ar && br) {
+          return b.added - a.added;
+        }
+        return ar ? 1 : br ? -1 : 0;
+      });
+      dispatch(resetFilteredGames());
+      dispatch(setGamesPerPage(1, games));
+    } else {
+      const filtered = games[0].filter((g) =>
+        g.genres.some((gen) => gen.name === e.target.options[index].value)
+      );
+      dispatch(setFilteredGames(filtered));
+      dispatch(setGamesPerPage(1, filtered));
+    }
   }
 
   if (games.length > 0) {
     return (
-      <nav>
+      <nav className="sidebar">
         <ul>
           <li>
             <label htmlFor="creados">Filtrar creados</label>
@@ -87,6 +106,26 @@ function Sidebar() {
             <select name="genres" id="genres-select" onChange={genreSelect}>
               <option value="">Seleccionar genero</option>
               <option value="Action">Action</option>
+              <option value="Indie">Indie</option>
+              <option value="Adventure">Adventure</option>
+              <option value="RPG">RPG</option>
+              <option value="Strategy">Strategy</option>
+              <option value="Shooter">Shooter</option>
+              <option value="Casual">Casual</option>
+              <option value="Simulation">Simulation</option>
+              <option value="Puzzle">Puzzle</option>
+              <option value="Arcade">Arcade</option>
+              <option value="Platformer">Platformer</option>
+              <option value="Racing">Racing</option>
+              <option value="Massively Multiplayer">
+                Massively Multiplayer
+              </option>
+              <option value="Sports">Sports</option>
+              <option value="Fighting">Fighting</option>
+              <option value="Board Games">Board Games</option>
+              <option value="Family">Family</option>
+              <option value="Educational">Educational</option>
+              <option value="Card">Card</option>
             </select>
           </li>
           <li>

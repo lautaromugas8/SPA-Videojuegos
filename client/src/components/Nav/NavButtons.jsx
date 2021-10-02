@@ -6,10 +6,12 @@ import { setGamesPerPage } from "../../redux/actions";
 
 function NavButtons() {
   const games = useSelector((state) => state.games);
+  const filteredGames = useSelector((state) => state.filteredGames);
   const dispatch = useDispatch();
 
   function handleClick() {
-    dispatch(setGamesPerPage(1, games));
+    if (filteredGames.length > 0) dispatch(setGamesPerPage(1, filteredGames));
+    else dispatch(setGamesPerPage(1, games));
     if (document.getElementsByClassName("nopagination")[0]) {
       document.getElementsByClassName("nopagination")[0].className =
         "pagination";

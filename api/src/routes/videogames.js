@@ -18,7 +18,7 @@ videogamesRouter.get("/", async (req, res) => {
       name = name.toLowerCase().replace(/\s/g, "-");
       //Busca juegos en la DB con name
       const DBGames = await Videogame.findAll({
-        attributes: ["id", "name"],
+        attributes: ["id", "name", "rating"],
         where: {
           name,
         },
@@ -66,7 +66,7 @@ videogamesRouter.get("/", async (req, res) => {
       let result = [];
       //Busca todos los juegos en la DB
       const DBGames = await Videogame.findAll({
-        attributes: ["id", "name"],
+        attributes: ["id", "name", "rating"],
         include: {
           model: Genre,
         },
@@ -84,15 +84,12 @@ videogamesRouter.get("/", async (req, res) => {
           });
         });
       }
-
       let response = await axios.get(
         `https://api.rawg.io/api/games?key=${API_KEY}`
       );
-      let i = 0;
       while (result.length < 100) {
-        for (let i = 0; i < 20 - DBGames.length; i++) {
-          const { id, name, background_image, genres, rating, added } =
-            response.data.results[i];
+        for (const game of response.data.results) {
+          const { id, name, background_image, genres, rating, added } = game;
           const gameData = {
             id,
             name,
@@ -103,10 +100,7 @@ videogamesRouter.get("/", async (req, res) => {
           };
           result.push(gameData);
         }
-        if (response.data.next) {
-          const data = await axios.get(response.data.next);
-          response = data;
-        }
+        if (result.length < 100) response = await axios.get(response.data.next);
       }
       res.send(result);
     }
