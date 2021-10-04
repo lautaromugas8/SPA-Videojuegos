@@ -14,10 +14,10 @@ export function getAllGames() {
   };
 }
 
-export function searchGame(e) {
+export function searchGame(value) {
   return async (dispatch) => {
     const response = await axios.get(
-      `http://localhost:3001/videogames?name=${e.target[0].value}`
+      `http://localhost:3001/videogames?name=${value}`
     );
     dispatch({ type: search, payload: response.data });
   };

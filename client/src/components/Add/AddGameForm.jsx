@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 import "./AddGameForm.css";
+import { getAllGames } from "../../redux/actions";
 
 function AddGameForm() {
   const [name, setName] = useState("");
@@ -10,6 +13,39 @@ function AddGameForm() {
   const [platforms, setPlatforms] = useState("");
   const [genres, setGenres] = useState([]);
   const [isPending, setIsPending] = useState(false);
+  const [isValid, setIsValid] = useState(true);
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const platArray = [
+    "pc",
+    "xbox 360",
+    "xbox one",
+    "playstation 1",
+    "playstation 2",
+    "playstation 3",
+    "playstation 4",
+    "playstation 5",
+    "nintendo wii",
+    "nintendo wii u",
+    "nintendo switch",
+  ];
+
+  function platformCheck(e) {
+    if (e.target.value.includes(",")) {
+      const splitted = e.target.value
+        .toLowerCase()
+        .replace(/, /g, ",")
+        .split(",");
+      setIsValid(
+        splitted.every((p) => {
+          return platArray.includes(p);
+        })
+      );
+    } else {
+      setIsValid(platArray.includes(e.target.value.toLowerCase()));
+    }
+  }
 
   function selectGenres(e) {
     if (genres.length > 3 && e.target.checked) {
@@ -27,6 +63,9 @@ function AddGameForm() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
+      if (!isValid) {
+        throw new Error("las plataformas deben ser validas");
+      }
       setIsPending(true);
       const response = await axios.post("http://localhost:3001/videogame", {
         name,
@@ -37,9 +76,11 @@ function AddGameForm() {
         genres,
       });
       setIsPending(false);
+      dispatch(getAllGames());
       alert(response.data);
+      history.go(0);
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   }
 
@@ -92,10 +133,14 @@ function AddGameForm() {
             type="text"
             required
             value={platforms}
-            onChange={(e) => setPlatforms(e.target.value)}
+            onChange={(e) => {
+              setPlatforms(e.target.value);
+              platformCheck(e);
+            }}
             placeholder="PC, PlayStation 5, Xbox One..."
           />
         </label>
+        {!isValid && <p>La plataforma no existe</p>}
         {/* <label>
           Generos:
           <select value="Seleccionar generos" onChange={selectGenres}>

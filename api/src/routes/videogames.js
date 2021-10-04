@@ -102,6 +102,8 @@ videogamesRouter.get("/", async (req, res) => {
         }
         if (result.length < 100) response = await axios.get(response.data.next);
       }
+      //Solo enviamos 100 juegos
+      result.splice(result.length - DBGames.length);
       res.send(result);
     }
   } catch (error) {
