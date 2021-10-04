@@ -65,6 +65,8 @@ videogameRouter.post("/", async (req, res) => {
 
   name = name.toLowerCase().replace(/\s/g, "-");
 
+  platforms = platforms.toLowerCase().replace(/, /g, ",");
+
   try {
     const videogame = await Videogame.create({
       name,

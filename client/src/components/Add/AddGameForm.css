@@ -1,0 +1,49 @@
+.add-game {
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 70px;
+  text-align: center;
+  color: lightyellow;
+  background-color: #1f2833;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.add-game label {
+  text-align: left;
+  display: block;
+}
+
+.add-game h1 {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.add-game input,
+.add-game textarea,
+.add-game select {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: block;
+}
+
+.add-game button {
+  background: #f1356d;
+  color: #fff;
+  border: 0;
+  padding: 8px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.add-game fieldset {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto;
+  align-items: center;
+  justify-items: start;
+  margin-bottom: 10px;
+}

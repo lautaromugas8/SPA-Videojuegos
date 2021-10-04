@@ -7,6 +7,7 @@ import Detail from "./components/Detail/Detail";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getAllGames } from "./redux/actions";
+import AddGameForm from "./components/Add/AddGameForm";
 
 function App() {
   console.log("app.js rendered");
@@ -20,6 +21,10 @@ function App() {
   return (
     <div className="App">
       <Switch>
+        <Route path="/home/add">
+          <Nav />
+          <AddGameForm />
+        </Route>
         <Route path="/home/game/:id">
           <Nav />
           <Detail />

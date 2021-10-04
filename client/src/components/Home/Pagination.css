@@ -21,3 +21,7 @@
   margin: 70px auto 0;
   opacity: 0;
 }
+
+.nopagination button {
+  margin: 3px;
+}
