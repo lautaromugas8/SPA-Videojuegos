@@ -7,7 +7,7 @@ import {
   set_filtered_games,
 } from "../actions";
 
-const initialState = {
+export const initialState = {
   games: [],
   filteredGames: [],
   gamesOnPage: [],
