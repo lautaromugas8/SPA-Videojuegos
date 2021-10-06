@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   resetFilteredGames,
@@ -8,10 +8,15 @@ import {
 import "./Sidebar.css";
 
 function Sidebar() {
-  const games = useSelector((state) => state.games);
+  const [checked, setChecked] = useState(false);
+  const [selectedGenres, setSelectedGenres] = useState("Seleccionar genero");
+  const [nameOrder, setNameOrder] = useState("Seleccionar orden alfabetico");
+  const [ratingOrder, setRatingOrder] = useState("Seleccionar orden rating");
+  const { games, filteredGames } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   function handleCheckbox(e) {
+    setChecked(!checked);
     if (e.target.checked) {
       const filtered = games[0].filter((g) => typeof g.id !== "number");
       if (!filtered) {
@@ -25,15 +30,29 @@ function Sidebar() {
 
   function handleChangeSelect(e) {
     const index = e.target.options.selectedIndex;
-
     if (e.target.name === "name") {
+      setRatingOrder("Seleccionar orden rating");
       if (e.target.options[index].value === "ASC") {
-        games[0].sort((a, b) => a.name.localeCompare(b.name));
-        dispatch(setGamesPerPage(1, games));
+        setNameOrder("ASC");
+        if (filteredGames.length) {
+          filteredGames.sort((a, b) => a.name.localeCompare(b.name));
+          dispatch(setGamesPerPage(1, filteredGames));
+        } else {
+          games[0].sort((a, b) => a.name.localeCompare(b.name));
+          dispatch(setGamesPerPage(1, games));
+        }
       } else if (e.target.options[index].value === "DESC") {
-        games[0].sort((a, b) => b.name.localeCompare(a.name));
-        dispatch(setGamesPerPage(1, games));
+        setNameOrder("DESC");
+        if (filteredGames.length) {
+          filteredGames.sort((a, b) => b.name.localeCompare(a.name));
+          dispatch(setGamesPerPage(1, filteredGames));
+        } else {
+          games[0].sort((a, b) => b.name.localeCompare(a.name));
+          dispatch(setGamesPerPage(1, games));
+        }
       } else {
+        setNameOrder("Seleccionar orden alfabetico");
+        setSelectedGenres("Seleccionar genero");
         games[0].sort((a, b) => {
           const ar = a.hasOwnProperty("added"),
             br = b.hasOwnProperty("added");
@@ -42,17 +61,32 @@ function Sidebar() {
           }
           return ar ? 1 : br ? -1 : 0;
         });
+        dispatch(resetFilteredGames());
         dispatch(setGamesPerPage(1, games));
       }
     } else if (e.target.name === "rating") {
+      setNameOrder("Seleccionar orden alfabetico");
       if (e.target.options[index].value === "ASC") {
-        games[0].sort((a, b) => a.rating - b.rating);
-
-        dispatch(setGamesPerPage(1, games));
+        setRatingOrder("ASC");
+        if (filteredGames.length) {
+          filteredGames.sort((a, b) => a.rating - b.rating);
+          dispatch(setGamesPerPage(1, filteredGames));
+        } else {
+          games[0].sort((a, b) => a.rating - b.rating);
+          dispatch(setGamesPerPage(1, games));
+        }
       } else if (e.target.options[index].value === "DESC") {
-        games[0].sort((a, b) => b.rating - a.rating);
-        dispatch(setGamesPerPage(1, games));
+        setRatingOrder("DESC");
+        if (filteredGames.length) {
+          filteredGames.sort((a, b) => b.rating - a.rating);
+          dispatch(setGamesPerPage(1, filteredGames));
+        } else {
+          games[0].sort((a, b) => b.rating - a.rating);
+          dispatch(setGamesPerPage(1, games));
+        }
       } else {
+        setRatingOrder("Seleccionar orden rating");
+        setSelectedGenres("Seleccionar genero");
         games[0].sort((a, b) => {
           const ar = a.hasOwnProperty("added"),
             br = b.hasOwnProperty("added");
@@ -61,6 +95,7 @@ function Sidebar() {
           }
           return ar ? 1 : br ? -1 : 0;
         });
+        dispatch(resetFilteredGames());
         dispatch(setGamesPerPage(1, games));
       }
     }
@@ -69,6 +104,10 @@ function Sidebar() {
   function genreSelect(e) {
     const index = e.target.options.selectedIndex;
     if (index === 0) {
+      setSelectedGenres("Seleccionar genero");
+      setRatingOrder("Seleccionar orden rating");
+      setNameOrder("Seleccionar orden alfabetico");
+      setChecked(false);
       games[0].sort((a, b) => {
         const ar = a.hasOwnProperty("added"),
           br = b.hasOwnProperty("added");
@@ -80,6 +119,7 @@ function Sidebar() {
       dispatch(resetFilteredGames());
       dispatch(setGamesPerPage(1, games));
     } else {
+      setSelectedGenres(e.target.options[index].value);
       const filtered = games[0].filter((g) =>
         g.genres.some((gen) => gen.name === e.target.options[index].value)
       );
@@ -98,12 +138,18 @@ function Sidebar() {
               type="checkbox"
               name="creados"
               id="creados"
+              checked={checked}
               onChange={handleCheckbox}
             />
           </li>
           <li>
             Genero:
-            <select name="genres" id="genres-select" onChange={genreSelect}>
+            <select
+              name="genres"
+              id="genres-select"
+              value={selectedGenres}
+              onChange={genreSelect}
+            >
               <option value="">Seleccionar genero</option>
               <option value="Action">Action</option>
               <option value="Indie">Indie</option>
@@ -130,7 +176,12 @@ function Sidebar() {
           </li>
           <li>
             Nombre:
-            <select name="name" id="name-select" onChange={handleChangeSelect}>
+            <select
+              name="name"
+              id="name-select"
+              value={nameOrder}
+              onChange={handleChangeSelect}
+            >
               <option value="">Seleccionar orden alfabetico</option>
               <option value="ASC">Ascendente</option>
               <option value="DESC">Descendente</option>
@@ -141,6 +192,7 @@ function Sidebar() {
             <select
               name="rating"
               id="rating-select"
+              value={ratingOrder}
               onChange={handleChangeSelect}
             >
               <option value="">Seleccionar orden rating</option>
