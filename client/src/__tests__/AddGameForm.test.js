@@ -5,6 +5,7 @@ import { createStore } from "redux";
 import reducer, { initialState } from "../redux/reducers/index";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import "@testing-library/jest-dom";
 
 function renderWithProviders(ui, { reduxState } = {}) {
   const store = createStore(reducer, reduxState || initialState);
@@ -13,7 +14,7 @@ function renderWithProviders(ui, { reduxState } = {}) {
 
 test("'Añadir Juego' button is enabled", () => {
   renderWithProviders(<AddGameForm />);
-  expect(screen.getByRole("button", { name: /Añadir Juego/i })).toBeEnabled();
+  expect(screen.getByRole("button", { name: /añadir juego/i })).toBeEnabled();
 });
 
 test("Form is functional", () => {
@@ -40,10 +41,25 @@ test("Form is functional", () => {
 test("Should warn the user when the platforms doesn't exist", () => {
   renderWithProviders(<AddGameForm />);
   userEvent.type(screen.getByLabelText(/plataformas/i), "aklasb");
-  screen.getByText(/la plataforma no existe/i);
+  expect(screen.getByText(/la plataforma no existe/i)).toBeInTheDocument();
 });
 
 test("Shouldn't let the user select more than 4 genres", async () => {
   renderWithProviders(<AddGameForm />);
-  console.log(screen.getByTestId(""));
+  const checkboxes = screen.getAllByRole("checkbox");
+  expect(checkboxes[0].checked).toBe(false);
+  expect(checkboxes[1].checked).toBe(false);
+  expect(checkboxes[2].checked).toBe(false);
+  expect(checkboxes[3].checked).toBe(false);
+  expect(checkboxes[4].checked).toBe(false);
+  userEvent.click(checkboxes[0]);
+  userEvent.click(checkboxes[1]);
+  userEvent.click(checkboxes[2]);
+  userEvent.click(checkboxes[3]);
+  userEvent.click(checkboxes[4]);
+  expect(checkboxes[0].checked).toBe(true);
+  expect(checkboxes[1].checked).toBe(true);
+  expect(checkboxes[2].checked).toBe(true);
+  expect(checkboxes[3].checked).toBe(true);
+  expect(checkboxes[4].checked).toBe(false);
 });
