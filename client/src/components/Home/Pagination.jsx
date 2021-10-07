@@ -4,17 +4,15 @@ import { setGamesPerPage } from "../../redux/actions";
 import "./Pagination.css";
 
 function Pagination() {
-  const games = useSelector((state) => state.games);
-  const gamesOnPage = useSelector((state) => state.gamesOnPage);
-  const filteredGames = useSelector((state) => state.filteredGames);
+  const { games, gamesOnPage, filteredGames } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   function handleClick(num) {
-    if (filteredGames.length > 0) dispatch(setGamesPerPage(num, filteredGames));
+    if (filteredGames.length) dispatch(setGamesPerPage(num, filteredGames));
     else dispatch(setGamesPerPage(num, games));
   }
 
-  if (gamesOnPage.length > 0) {
+  if (gamesOnPage.length) {
     return (
       <div
         className={

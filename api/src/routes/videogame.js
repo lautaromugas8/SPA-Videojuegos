@@ -8,7 +8,6 @@ const videogameRouter = Router();
 
 videogameRouter.get("/:id", async (req, res) => {
   const { id } = req.params;
-  //nombre, imagen, generos, descripcion, release, rating, plataformas
   try {
     if (
       /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(
@@ -64,8 +63,6 @@ videogameRouter.post("/", async (req, res) => {
   }
 
   name = name.toLowerCase().replace(/\s/g, "-");
-
-  platforms = platforms.toLowerCase().replace(/, /g, ",");
 
   try {
     const videogame = await Videogame.create({

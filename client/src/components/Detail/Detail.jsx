@@ -32,7 +32,7 @@ function Detail() {
     return () => dispatch(detailUnmount());
   }, [dispatch, id]);
 
-  if (Object.keys(game).length > 1) {
+  if (Object.keys(game).length) {
     return (
       <div className="detail-container">
         <div className="detail-title">
@@ -81,7 +81,7 @@ function Detail() {
       </div>
     );
   } else {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 }
 

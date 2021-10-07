@@ -5,16 +5,15 @@ import Game from "./Game";
 import "./GameList.css";
 
 function GameList() {
-  const games = useSelector((state) => state.games);
+  const { games, gamesOnPage } = useSelector((state) => state);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(setGamesPerPage(1, games));
     console.log("page 1");
   }, [dispatch, games]);
 
-  const gamesOnPage = useSelector((state) => state.gamesOnPage);
-
-  if (gamesOnPage.length > 0) {
+  if (gamesOnPage.length) {
     return (
       <div className="games-list">
         {gamesOnPage[0].map((g) => (
@@ -23,7 +22,7 @@ function GameList() {
       </div>
     );
   } else {
-    return <div></div>;
+    return <div className="loading"></div>;
   }
 }
 

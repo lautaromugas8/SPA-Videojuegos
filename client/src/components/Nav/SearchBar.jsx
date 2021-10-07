@@ -30,7 +30,8 @@ function SearchBar() {
         onChange={(e) => setInputValue(e.target.value)}
         required
       />
-      <button>Buscar</button>
+      {inputValue && <button>Buscar</button>}
+      {!inputValue && <button disabled>Buscar</button>}
     </form>
   );
 }

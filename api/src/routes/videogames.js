@@ -3,11 +3,8 @@ const { Router } = require("express");
 const axios = require("axios").default;
 const { API_KEY } = process.env;
 const { Videogame, Genre } = require("../db");
-const { Op } = require("sequelize");
 
 const videogamesRouter = Router();
-
-//TODO: completar las rutas
 
 videogamesRouter.get("/", async (req, res) => {
   let { name } = req.query;
@@ -16,7 +13,7 @@ videogamesRouter.get("/", async (req, res) => {
       let result = [];
       //name en minusculas, reemplaza espacios por "-"
       name = name.toLowerCase().replace(/\s/g, "-");
-      //Busca juegos en la DB con name
+      //Busca juegos en la DB con ese name
       const DBGames = await Videogame.findAll({
         attributes: ["id", "name", "rating"],
         where: {
@@ -27,7 +24,7 @@ videogamesRouter.get("/", async (req, res) => {
         },
       });
       //Si encuentra juegos, push a result
-      if (DBGames.length > 0) {
+      if (DBGames.length) {
         DBGames.forEach((v) => {
           result.push({
             id: v.dataValues.id,
@@ -47,7 +44,7 @@ videogamesRouter.get("/", async (req, res) => {
 
       const data = await response.data.results;
 
-      if (data.length < 1) return res.send("No existe ningun videojuego");
+      if (!data.length) return res.send("No existe ningun videojuego");
 
       for (let i = 0; i < 15 - DBGames.length; i++) {
         const { id, name, background_image, genres, rating, added } = data[i];
