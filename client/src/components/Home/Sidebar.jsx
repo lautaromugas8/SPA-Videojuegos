@@ -19,7 +19,8 @@ function Sidebar() {
     setChecked(!checked);
     if (e.target.checked) {
       const filtered = games[0].filter((g) => typeof g.id !== "number");
-      if (!filtered) {
+      if (!filtered.length) {
+        setChecked(false);
         return alert("No tenes ningún juego creado");
       }
       dispatch(setGamesPerPage("creados", filtered));

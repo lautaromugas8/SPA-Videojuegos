@@ -15,7 +15,7 @@ videogamesRouter.get("/", async (req, res) => {
       name = name.toLowerCase().replace(/\s/g, "-");
       //Busca juegos en la DB con ese name
       const DBGames = await Videogame.findAll({
-        attributes: ["id", "name", "rating"],
+        attributes: ["id", "name", "rating", "background_image"],
         where: {
           name,
         },
@@ -30,6 +30,7 @@ videogamesRouter.get("/", async (req, res) => {
             id: v.dataValues.id,
             name: v.dataValues.name,
             rating: v.dataValues.rating,
+            background_image: v.dataValues.background_image,
             genres: v.dataValues.genres.map((g) => {
               return { id: g.dataValues.id, name: g.dataValues.name };
             }),
@@ -63,7 +64,7 @@ videogamesRouter.get("/", async (req, res) => {
       let result = [];
       //Busca todos los juegos en la DB
       const DBGames = await Videogame.findAll({
-        attributes: ["id", "name", "rating"],
+        attributes: ["id", "name", "rating", "background_image"],
         include: {
           model: Genre,
         },
@@ -75,6 +76,7 @@ videogamesRouter.get("/", async (req, res) => {
             id: v.dataValues.id,
             name: v.dataValues.name,
             rating: v.dataValues.rating,
+            background_image: v.dataValues.background_image,
             genres: v.dataValues.genres.map((g) => {
               return { id: g.dataValues.id, name: g.dataValues.name };
             }),

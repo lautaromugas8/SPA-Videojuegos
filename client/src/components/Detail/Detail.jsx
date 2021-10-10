@@ -1,13 +1,17 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { detailUnmount, getGameDetail } from "../../redux/actions/index";
+import {
+  detailUnmount,
+  getGameDetail,
+  resetFilteredGames,
+} from "../../redux/actions/index";
 import defaultImage from "../../images/default-placeholder.png";
 import "./Detail.css";
 
 function Detail() {
   const dispatch = useDispatch();
-  const game = useSelector((state) => state.gameDetail);
+  const { gameDetail, games } = useSelector((state) => state);
   const { id } = useParams();
   let {
     background_image,
@@ -17,7 +21,7 @@ function Detail() {
     platforms,
     rating,
     released,
-  } = game;
+  } = gameDetail;
 
   if (!rating) {
     rating = "";
@@ -29,10 +33,19 @@ function Detail() {
 
   useEffect(() => {
     dispatch(getGameDetail(id));
+    dispatch(resetFilteredGames());
+    games[0].sort((a, b) => {
+      const ar = a.hasOwnProperty("added"),
+        br = b.hasOwnProperty("added");
+      if (ar && br) {
+        return b.added - a.added;
+      }
+      return ar ? 1 : br ? -1 : 0;
+    });
     return () => dispatch(detailUnmount());
-  }, [dispatch, id]);
+  }, [dispatch, id, games]);
 
-  if (Object.keys(game).length) {
+  if (Object.keys(gameDetail).length) {
     return (
       <div className="detail-container">
         <div className="detail-title">

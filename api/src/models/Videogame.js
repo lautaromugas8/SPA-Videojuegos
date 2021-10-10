@@ -20,11 +20,14 @@ module.exports = (sequelize) => {
         type: DataTypes.TEXT,
         allowNull: false,
       },
-      release_date: {
+      released: {
         type: DataTypes.DATEONLY,
       },
       rating: {
         type: DataTypes.DECIMAL(3, 2),
+      },
+      background_image: {
+        type: DataTypes.STRING,
       },
       platforms: {
         type: DataTypes.STRING,

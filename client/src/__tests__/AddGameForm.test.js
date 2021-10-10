@@ -19,47 +19,41 @@ test("'Añadir Juego' button is enabled", () => {
 
 test("Form is functional", () => {
   renderWithProviders(<AddGameForm />);
+  const checkboxes = screen.getAllByRole("checkbox");
   userEvent.type(screen.getByLabelText(/nombre:/i), "Mi Primer Juego");
   userEvent.type(
     screen.getByLabelText(/descripción:/i),
     "Este es mi primer juego"
   );
-  userEvent.type(
-    screen.getByLabelText(/plataformas:/i),
-    "Nintendo Switch, PlayStation 5"
-  );
+  userEvent.click(checkboxes[0]);
+  userEvent.click(checkboxes[1]);
+  userEvent.click(checkboxes[2]);
 
   expect(screen.getByLabelText(/nombre:/i).value).toBe("Mi Primer Juego");
   expect(screen.getByLabelText(/descripción:/i).value).toBe(
     "Este es mi primer juego"
   );
-  expect(screen.getByLabelText(/plataformas:/i).value).toBe(
-    "Nintendo Switch, PlayStation 5"
-  );
-});
-
-test("Should warn the user when the platforms doesn't exist", () => {
-  renderWithProviders(<AddGameForm />);
-  userEvent.type(screen.getByLabelText(/plataformas/i), "aklasb");
-  expect(screen.getByText(/la plataforma no existe/i)).toBeInTheDocument();
+  expect(checkboxes[0].checked).toBe(true);
+  expect(checkboxes[1].checked).toBe(true);
+  expect(checkboxes[2].checked).toBe(true);
 });
 
 test("Shouldn't let the user select more than 4 genres", async () => {
   renderWithProviders(<AddGameForm />);
   const checkboxes = screen.getAllByRole("checkbox");
-  expect(checkboxes[0].checked).toBe(false);
-  expect(checkboxes[1].checked).toBe(false);
-  expect(checkboxes[2].checked).toBe(false);
-  expect(checkboxes[3].checked).toBe(false);
-  expect(checkboxes[4].checked).toBe(false);
-  userEvent.click(checkboxes[0]);
-  userEvent.click(checkboxes[1]);
-  userEvent.click(checkboxes[2]);
-  userEvent.click(checkboxes[3]);
-  userEvent.click(checkboxes[4]);
-  expect(checkboxes[0].checked).toBe(true);
-  expect(checkboxes[1].checked).toBe(true);
-  expect(checkboxes[2].checked).toBe(true);
-  expect(checkboxes[3].checked).toBe(true);
-  expect(checkboxes[4].checked).toBe(false);
+  expect(checkboxes[12].checked).toBe(false);
+  expect(checkboxes[13].checked).toBe(false);
+  expect(checkboxes[14].checked).toBe(false);
+  expect(checkboxes[15].checked).toBe(false);
+  expect(checkboxes[16].checked).toBe(false);
+  userEvent.click(checkboxes[12]);
+  userEvent.click(checkboxes[13]);
+  userEvent.click(checkboxes[14]);
+  userEvent.click(checkboxes[15]);
+  userEvent.click(checkboxes[16]);
+  expect(checkboxes[12].checked).toBe(true);
+  expect(checkboxes[13].checked).toBe(true);
+  expect(checkboxes[14].checked).toBe(true);
+  expect(checkboxes[15].checked).toBe(true);
+  expect(checkboxes[16].checked).toBe(false);
 });

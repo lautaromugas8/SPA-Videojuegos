@@ -52,24 +52,31 @@ videogameRouter.get("/:id", async (req, res) => {
 });
 
 videogameRouter.post("/", async (req, res) => {
-  let { name, description, release_date, rating, platforms, genres } = req.body;
-  if (!release_date) {
-    // release_date = new Date().toISOString().split("T")[0];
-    release_date = undefined;
-  }
-
-  if (!rating) {
-    rating = undefined;
-  }
+  let {
+    name,
+    description,
+    released,
+    rating,
+    background_image,
+    platforms,
+    genres,
+  } = req.body;
+  // release_date = new Date().toISOString().split("T")[0];
+  if (!released) released = undefined;
+  if (!rating) rating = undefined;
+  if (!background_image) background_image = undefined;
 
   name = name.toLowerCase().replace(/\s/g, "-");
+
+  platforms = platforms.join(", ");
 
   try {
     const videogame = await Videogame.create({
       name,
       description,
-      release_date,
+      released,
       rating,
+      background_image,
       platforms,
     });
 

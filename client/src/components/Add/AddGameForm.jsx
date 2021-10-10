@@ -8,42 +8,20 @@ import { getAllGames } from "../../redux/actions";
 function AddGameForm() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [release_date, setReleaseDate] = useState("");
+  const [released, setReleased] = useState("");
   const [rating, setRating] = useState("");
-  const [platforms, setPlatforms] = useState("");
+  const [background_image, setBackground_Image] = useState("");
+  const [platforms, setPlatforms] = useState([]);
   const [genres, setGenres] = useState([]);
   const [isPending, setIsPending] = useState(false);
-  const [isValid, setIsValid] = useState(true);
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const platArray = [
-    "pc",
-    "xbox 360",
-    "xbox one",
-    "playstation 1",
-    "playstation 2",
-    "playstation 3",
-    "playstation 4",
-    "playstation 5",
-    "nintendo wii",
-    "nintendo wii u",
-    "nintendo switch",
-  ];
-
-  function platformCheck(e) {
-    if (e.target.value.includes(",")) {
-      const splitted = e.target.value
-        .toLowerCase()
-        .replace(/, /g, ",")
-        .split(",");
-      setIsValid(
-        splitted.every((p) => {
-          return platArray.includes(p);
-        })
-      );
+  function selectPlatforms(e) {
+    if (platforms.includes(e.target.value)) {
+      setPlatforms(platforms.filter((elem) => elem !== e.target.value));
     } else {
-      setIsValid(platArray.includes(e.target.value.toLowerCase()));
+      setPlatforms([...platforms, e.target.value]);
     }
   }
 
@@ -63,15 +41,15 @@ function AddGameForm() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      if (!isValid) {
-        throw new Error("las plataformas deben ser validas");
-      }
+      if (!platforms.length)
+        throw new Error("Debes seleccionar al menos una plataforma");
       setIsPending(true);
       const response = await axios.post("http://localhost:3001/videogame", {
         name,
         description,
-        release_date,
+        released,
         rating,
+        background_image,
         platforms,
         genres,
       });
@@ -111,8 +89,8 @@ function AddGameForm() {
           Fecha de Lanzamiento:
           <input
             type="date"
-            value={release_date}
-            onChange={(e) => setReleaseDate(e.target.value)}
+            value={released}
+            onChange={(e) => setReleased(e.target.value)}
           />
         </label>
         <label>
@@ -128,19 +106,40 @@ function AddGameForm() {
           />
         </label>
         <label>
-          Plataformas:
+          Imagen:
           <input
-            type="text"
-            required
-            value={platforms}
-            onChange={(e) => {
-              setPlatforms(e.target.value);
-              platformCheck(e);
-            }}
-            placeholder="PC, PlayStation 5, Xbox One..."
+            type="url"
+            value={background_image}
+            onChange={(e) => setBackground_Image(e.target.value)}
           />
         </label>
-        {!isValid && <p>La plataforma no existe</p>}
+        <fieldset onChange={selectPlatforms}>
+          <legend>Plataformas</legend>
+          <input type="checkbox" value="PC" />
+          PC
+          <input type="checkbox" value="Xbox 360" />
+          Xbox 360
+          <input type="checkbox" value="Xbox One" />
+          Xbox One
+          <input type="checkbox" value="PlayStation 1" />
+          PS1
+          <input type="checkbox" value="PlayStation 2" />
+          PS2
+          <input type="checkbox" value="PlayStation 3" />
+          PS3
+          <input type="checkbox" value="PlayStation 4" />
+          PS4
+          <input type="checkbox" value="PlayStation 5" />
+          PS5
+          <input type="checkbox" value="Nintendo Wii" />
+          Nintendo Wii
+          <input type="checkbox" value="Nintendo Wii U" />
+          Nintendo Wii U
+          <input type="checkbox" value="Nintendo Switch" />
+          Nintendo Switch
+          <input type="checkbox" value="Mobile" />
+          Mobile
+        </fieldset>
         <fieldset onChange={selectGenres}>
           <legend>Generos (máximo 4)</legend>
           <input type="checkbox" value="1" />

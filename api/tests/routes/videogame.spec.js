@@ -2,14 +2,14 @@
 const { expect } = require("chai");
 const session = require("supertest-session");
 const app = require("../../src/app.js");
-const { Videogame, conn } = require("../../src/db.js");
+const { Videogame, conn, Genre } = require("../../src/db.js");
 
 const agent = session(app);
 const videogame = {
   name: "Super Mario Bros",
   description: "Es un videojuego de plataformas desarrollado por Nintendo",
-  release_date: "1985-11-13",
-  platforms: "NES",
+  released: "1985-11-13",
+  platforms: ["NES", "SNES"],
   genres: [11],
 };
 
@@ -19,9 +19,15 @@ describe("Videogame routes", () => {
       console.error("Unable to connect to the database:", err);
     })
   );
-  beforeEach(() =>
-    Videogame.sync({ force: true }).then(() => Videogame.create(videogame))
-  );
+  before(async () => {
+    await Genre.sync({ force: true });
+    await agent.get("/genres");
+  });
+  beforeEach(async () => await Videogame.sync({ force: true }));
+  after(() => {
+    Videogame.sync({ force: true });
+    Genre.sync({ force: true });
+  });
   describe("GET /videogames", () => {
     it("should get 200", async () => {
       const response = await agent.get("/videogames");
@@ -43,9 +49,9 @@ describe("Videogame routes", () => {
       expect(response.status).to.eql(201);
       expect(response.text).to.eql("Videogame created");
       const gameInDB = await Videogame.findOne({
-        where: { name: videogame.name },
+        where: { name: "super-mario-bros" },
       });
-      expect(gameInDB.dataValues.platforms).to.eql(videogame.platforms);
+      expect(gameInDB.dataValues.description).to.eql(videogame.description);
     });
   });
   describe("GET /videogame/:id", () => {

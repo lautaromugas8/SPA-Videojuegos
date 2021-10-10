@@ -3,7 +3,7 @@ const { expect } = require("chai");
 const videogame = {
   name: "Super Mario Bros",
   description: "Es un videojuego de plataformas desarrollado por Nintendo",
-  release_date: "1985-11-13",
+  released: "1985-11-13",
   platforms: "NES",
   genres: [11],
 };
@@ -19,7 +19,7 @@ describe("Videogame model", () => {
     describe("game", () => {
       it("should throw an error if name, description or platforms are null", async () => {
         try {
-          const response = await Videogame.create({});
+          await Videogame.create({});
         } catch (error) {
           expect(error.message).to.eql(
             "notNull Violation: videogame.name cannot be null,\nnotNull Violation: videogame.description cannot be null,\nnotNull Violation: videogame.platforms cannot be null"
@@ -32,9 +32,10 @@ describe("Videogame model", () => {
           "id",
           "name",
           "description",
-          "release_date",
+          "released",
           "platforms",
-          "rating"
+          "rating",
+          "background_image"
         );
         const createdGame = await Videogame.findOne({
           where: { name: videogame.name },
