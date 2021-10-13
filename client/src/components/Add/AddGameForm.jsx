@@ -27,7 +27,7 @@ function AddGameForm() {
 
   function selectGenres(e) {
     if (genres.length > 3 && e.target.checked) {
-      alert("no podes seleccionar mas de 4");
+      alert("No podés seleccionar mas de 4");
       e.target.checked = false;
       return;
     }
@@ -42,7 +42,7 @@ function AddGameForm() {
     e.preventDefault();
     try {
       if (!platforms.length)
-        throw new Error("Debes seleccionar al menos una plataforma");
+        throw new Error("Debés seleccionar al menos una plataforma");
       setIsPending(true);
       const response = await axios.post("http://localhost:3001/videogame", {
         name,

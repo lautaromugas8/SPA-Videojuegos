@@ -10,7 +10,7 @@ import "./Sidebar.css";
 function Sidebar() {
   const [checked, setChecked] = useState(false);
   const [selectedGenres, setSelectedGenres] = useState("Seleccionar genero");
-  const [nameOrder, setNameOrder] = useState("Seleccionar orden alfabetico");
+  const [nameOrder, setNameOrder] = useState("Seleccionar orden alfabético");
   const [ratingOrder, setRatingOrder] = useState("Seleccionar orden rating");
   const { games, filteredGames } = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -52,7 +52,7 @@ function Sidebar() {
           dispatch(setGamesPerPage(1, games));
         }
       } else {
-        setNameOrder("Seleccionar orden alfabetico");
+        setNameOrder("Seleccionar orden alfabético");
         setSelectedGenres("Seleccionar genero");
         games[0].sort((a, b) => {
           const ar = a.hasOwnProperty("added"),
@@ -66,7 +66,7 @@ function Sidebar() {
         dispatch(setGamesPerPage(1, games));
       }
     } else if (e.target.name === "rating") {
-      setNameOrder("Seleccionar orden alfabetico");
+      setNameOrder("Seleccionar orden alfabético");
       if (e.target.options[index].value === "ASC") {
         setRatingOrder("ASC");
         if (filteredGames.length) {
@@ -107,7 +107,7 @@ function Sidebar() {
     if (index === 0) {
       setSelectedGenres("Seleccionar genero");
       setRatingOrder("Seleccionar orden rating");
-      setNameOrder("Seleccionar orden alfabetico");
+      setNameOrder("Seleccionar orden alfabético");
       setChecked(false);
       games[0].sort((a, b) => {
         const ar = a.hasOwnProperty("added"),
@@ -183,7 +183,7 @@ function Sidebar() {
               value={nameOrder}
               onChange={handleChangeSelect}
             >
-              <option value="">Seleccionar orden alfabetico</option>
+              <option value="">Seleccionar orden alfabético</option>
               <option value="ASC">Ascendente</option>
               <option value="DESC">Descendente</option>
             </select>

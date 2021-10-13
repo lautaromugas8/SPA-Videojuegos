@@ -25,9 +25,6 @@ function NavButtons() {
       <Link to="/home/add">
         <li id="crear">Crear</li>
       </Link>
-      <Link to="/home/about">
-        <li id="about">Acerca de</li>
-      </Link>
     </ul>
   );
 }
