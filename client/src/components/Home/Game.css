@@ -5,6 +5,7 @@
   height: 410px;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.719);
+  box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.5);
 }
 
 .game:hover {

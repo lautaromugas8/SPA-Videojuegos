@@ -9,6 +9,7 @@ import "./Sidebar.css";
 
 function Sidebar() {
   const [checked, setChecked] = useState(false);
+  const [apiChecked, setApiChecked] = useState(false);
   const [selectedGenres, setSelectedGenres] = useState("Seleccionar genero");
   const [nameOrder, setNameOrder] = useState("Seleccionar orden alfabético");
   const [ratingOrder, setRatingOrder] = useState("Seleccionar orden rating");
@@ -23,6 +24,16 @@ function Sidebar() {
         setChecked(false);
         return alert("No tenes ningún juego creado");
       }
+      dispatch(setGamesPerPage("creados", filtered));
+    } else {
+      dispatch(setGamesPerPage(1, games));
+    }
+  }
+
+  function handleApiCheck(e) {
+    setApiChecked(!apiChecked);
+    if (e.target.checked) {
+      const filtered = games[0].filter((g) => typeof g.id === "number");
       dispatch(setGamesPerPage("creados", filtered));
     } else {
       dispatch(setGamesPerPage(1, games));
@@ -141,6 +152,16 @@ function Sidebar() {
               id="creados"
               checked={checked}
               onChange={handleCheckbox}
+            />
+          </li>
+          <li>
+            <label htmlFor="creados">Filtrar solo API</label>
+            <input
+              type="checkbox"
+              name="creados"
+              id="creados"
+              checked={apiChecked}
+              onChange={handleApiCheck}
             />
           </li>
           <li>
