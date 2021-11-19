@@ -1,6 +1,6 @@
 ## About The Project
 
-Este proyecto individual fue requerido para la aprobación del [Bootcamp Henry](https://www.soyhenry.com/), donde puse en práctica lo aprendido durante el mismo, vinculando una base de datos, con un back-end y un front-end
+This individual project was a requirement for the [Henry Bootcamp](https://www.soyhenry.com/) approval, where I put into practice what I learned during the Bootcamp, linking a database, with a back-end and a front-end.
 
 ### Built With
 
