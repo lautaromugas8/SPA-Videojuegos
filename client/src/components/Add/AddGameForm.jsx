@@ -6,11 +6,13 @@ import "./AddGameForm.css";
 import { getAllGames } from "../../redux/actions";
 
 function AddGameForm() {
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [released, setReleased] = useState("");
-  const [rating, setRating] = useState("");
-  const [background_image, setBackground_Image] = useState("");
+  const [input, setInput] = useState({
+    name: "",
+    description: "",
+    released: "",
+    rating: "",
+    background_image: "",
+  });
   const [platforms, setPlatforms] = useState([]);
   const [genres, setGenres] = useState([]);
   const [isPending, setIsPending] = useState(false);
@@ -45,11 +47,7 @@ function AddGameForm() {
         throw new Error("Debés seleccionar al menos una plataforma");
       setIsPending(true);
       const response = await axios.post("http://localhost:3001/videogame", {
-        name,
-        description,
-        released,
-        rating,
-        background_image,
+        ...input,
         platforms,
         genres,
       });
@@ -62,6 +60,10 @@ function AddGameForm() {
     }
   }
 
+  function updateInputs(e) {
+    setInput({ ...input, [e.target.name]: e.target.value });
+  }
+
   return (
     <div className="add-game">
       <h1>Añadir un juego</h1>
@@ -71,8 +73,9 @@ function AddGameForm() {
           <input
             type="text"
             required
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            name="name"
+            value={input.name}
+            onChange={updateInputs}
             placeholder="Mi primer juego"
           />
         </label>
@@ -80,8 +83,9 @@ function AddGameForm() {
           Descripción:
           <textarea
             required
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            name="description"
+            value={input.description}
+            onChange={updateInputs}
             placeholder="Escribí una descripción sobre tu juego..."
           ></textarea>
         </label>
@@ -89,16 +93,18 @@ function AddGameForm() {
           Fecha de Lanzamiento:
           <input
             type="date"
-            value={released}
-            onChange={(e) => setReleased(e.target.value)}
+            name="released"
+            value={input.released}
+            onChange={updateInputs}
           />
         </label>
         <label>
           Rating:
           <input
             type="number"
-            value={rating}
-            onChange={(e) => setRating(e.target.value)}
+            name="rating"
+            value={input.rating}
+            onChange={updateInputs}
             placeholder="3.50"
             step="0.01"
             min="0"
@@ -109,8 +115,9 @@ function AddGameForm() {
           Imagen:
           <input
             type="url"
-            value={background_image}
-            onChange={(e) => setBackground_Image(e.target.value)}
+            name="background_image"
+            value={input.background_image}
+            onChange={updateInputs}
           />
         </label>
         <fieldset onChange={selectPlatforms}>

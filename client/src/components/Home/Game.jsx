@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import defaultImage from "../../images/default-placeholder.png";
 import { Link } from "react-router-dom";
 import "./Game.css";
@@ -21,5 +22,13 @@ function Game({ props }) {
     </Link>
   );
 }
+
+Game.propTypes = {
+  props: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    background_image: PropTypes.string,
+    genres: PropTypes.array.isRequired,
+  }).isRequired,
+};
 
 export default Game;
