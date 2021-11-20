@@ -6,14 +6,16 @@ const { Videogame, Genre } = require("../db");
 
 const videogamesRouter = Router();
 
+// Gets all the games, from the DataBase and the API.
+// If name is provided, then it searches up to 15 games relevant to that name.
 videogamesRouter.get("/", async (req, res) => {
   let { name } = req.query;
   try {
     if (name) {
       let result = [];
-      //name en minusculas, reemplaza espacios por "-"
+      // Sets variable "name" to lower case and replaces all blank spaces with "-".
       name = name.toLowerCase().replace(/\s/g, "-");
-      //Busca juegos en la DB con ese name
+      // Search for games with that name in the DataBase.
       const DBGames = await Videogame.findAll({
         attributes: ["id", "name", "rating", "background_image"],
         where: {
@@ -23,7 +25,7 @@ videogamesRouter.get("/", async (req, res) => {
           model: Genre,
         },
       });
-      //Si encuentra juegos, push a result
+      // If found, pushes it to the result array.
       if (DBGames.length) {
         DBGames.forEach((v) => {
           result.push({
@@ -38,7 +40,7 @@ videogamesRouter.get("/", async (req, res) => {
         });
       }
 
-      //Juegos de la API
+      // Search for games with that name in the API and pushes them into the result array.
       const response = await axios.get(
         `https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`
       );
@@ -62,14 +64,14 @@ videogamesRouter.get("/", async (req, res) => {
       res.send(result);
     } else {
       let result = [];
-      //Busca todos los juegos en la DB
+      // Gets all the games from the DataBase.
       const DBGames = await Videogame.findAll({
         attributes: ["id", "name", "rating", "background_image"],
         include: {
           model: Genre,
         },
       });
-      //Si hay juegos, push a result
+      // If there are games, pushes them into the result array.
       if (DBGames.length > 0) {
         DBGames.forEach((v) => {
           result.push({
@@ -86,6 +88,9 @@ videogamesRouter.get("/", async (req, res) => {
       let response = await axios.get(
         `https://api.rawg.io/api/games?key=${API_KEY}`
       );
+      // Loops through the result we get from the API, pushing every game into the result array
+      // then sets response to response.data.next, which contains the URL of the next page of results.
+      // stops once result has 100 games.
       while (result.length < 100) {
         for (const game of response.data.results) {
           const { id, name, background_image, genres, rating, added } = game;
@@ -101,7 +106,7 @@ videogamesRouter.get("/", async (req, res) => {
         }
         if (result.length < 100) response = await axios.get(response.data.next);
       }
-      //Solo enviamos 100 juegos
+      // We send a maximum of 100 games.
       result.splice(result.length - DBGames.length);
       res.send(result);
     }

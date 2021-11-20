@@ -6,9 +6,11 @@ const { Videogame, Genre } = require("../db");
 
 const videogameRouter = Router();
 
+// Gets the data for the game details page.
 videogameRouter.get("/:id", async (req, res) => {
   const { id } = req.params;
   try {
+    // If "id" is an instance of UUID, then the game is in the DataBase.
     if (
       /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(
         id
@@ -51,6 +53,7 @@ videogameRouter.get("/:id", async (req, res) => {
   }
 });
 
+// Adds a game in the DataBase, from the "add game form" page.
 videogameRouter.post("/", async (req, res) => {
   let {
     name,
