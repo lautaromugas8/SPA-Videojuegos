@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import LandingButton from "./LandingButton";
 import LandingBackground from "./LandingBackground";
 

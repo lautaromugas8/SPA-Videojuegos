@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import defaultImage from "../../images/default-placeholder.png";
 import { Link } from "react-router-dom";
@@ -9,10 +9,7 @@ function Game({ props }) {
     <Link to={`/home/game/${props.id}`}>
       <div className="game">
         <h4>{props.name.replace(/-/g, " ")}</h4>
-        <img
-          src={props.background_image ? props.background_image : defaultImage}
-          alt=""
-        />
+        <img src={props.background_image ?? defaultImage} alt="" />
         <p>
           {props.genres.map((g, index) =>
             index === props.genres.length - 1 ? g.name + "." : g.name + ", "

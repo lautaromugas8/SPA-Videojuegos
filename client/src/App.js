@@ -5,24 +5,17 @@ import Nav from "./components/Nav/Nav";
 import Detail from "./components/Detail/Detail";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getAllGames } from "./redux/actions";
+import { getAllGames } from "./redux/actions/gamesActions";
 import AddGameForm from "./components/Add/AddGameForm";
-import axios from "axios";
+import { getAllGenres } from "./redux/actions/genresActions";
 
 function App() {
-  console.log("app.js rendered");
   const dispatch = useDispatch();
-
-  async function getAllGenres() {
-    await axios.get("http://localhost:3001/genres");
-    console.log("genres fetched");
-  }
 
   useEffect(() => {
     dispatch(getAllGames());
-    console.log("fetching games");
-    getAllGenres();
-  });
+    dispatch(getAllGenres());
+  }, [dispatch]);
 
   return (
     <div className="App">

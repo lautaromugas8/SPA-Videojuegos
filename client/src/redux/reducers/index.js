@@ -1,55 +1,14 @@
-import {
-  get_all_games,
-  search,
-  reset,
-  get_game_detail,
-  set_games_on_page,
-  set_filtered_games,
-} from "../actions";
+import { combineReducers } from "redux";
+import gamesReducer from "../reducers/gamesReducer";
+import genresReducer from "../reducers/genresReducer";
+import gameDetailReducer from "../reducers/gameDetailReducer";
+import gamesOnPageReducer from "../reducers/gamesOnPageReducer";
+import filteredGamesReducer from "../reducers/filteredGamesReducer";
 
-export const initialState = {
-  games: [],
-  filteredGames: [],
-  gamesOnPage: [],
-  gameDetail: {},
-};
-
-function reducer(state = initialState, action) {
-  switch (action.type) {
-    case search:
-      return {
-        ...state,
-        gamesOnPage: [action.payload],
-      };
-    case get_all_games:
-      return {
-        ...state,
-        games: [action.payload],
-      };
-    case get_game_detail:
-      return {
-        ...state,
-        gameDetail: { ...state.gameDetail, ...action.payload },
-      };
-    case set_games_on_page:
-      return {
-        ...state,
-        gamesOnPage: [action.payload],
-      };
-    case reset:
-      return {
-        ...state,
-        gameDetail: {},
-        filteredGames: [],
-      };
-    case set_filtered_games:
-      return {
-        ...state,
-        filteredGames: action.payload,
-      };
-    default:
-      return state;
-  }
-}
-
-export default reducer;
+export default combineReducers({
+  games: gamesReducer,
+  genres: genresReducer,
+  gameDetail: gameDetailReducer,
+  gamesOnPage: gamesOnPageReducer,
+  filteredGames: filteredGamesReducer,
+});

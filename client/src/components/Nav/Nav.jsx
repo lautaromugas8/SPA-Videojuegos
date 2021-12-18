@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import SearchBar from "./SearchBar";
 import "./Nav.css";
 import NavButtons from "./NavButtons";

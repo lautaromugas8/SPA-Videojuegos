@@ -1,21 +1,21 @@
-import React, { useState } from "react";
+import * as React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import "./AddGameForm.css";
-import { getAllGames } from "../../redux/actions";
+import { getAllGames } from "../../redux/actions/gamesActions";
 
 function AddGameForm() {
-  const [input, setInput] = useState({
+  const [input, setInput] = React.useState({
     name: "",
     description: "",
     released: "",
     rating: "",
     background_image: "",
   });
-  const [platforms, setPlatforms] = useState([]);
-  const [genres, setGenres] = useState([]);
-  const [isPending, setIsPending] = useState(false);
+  const [platforms, setPlatforms] = React.useState([]);
+  const [genres, setGenres] = React.useState([]);
+  const [isPending, setIsPending] = React.useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -46,7 +46,7 @@ function AddGameForm() {
       if (!platforms.length)
         throw new Error("Debés seleccionar al menos una plataforma");
       setIsPending(true);
-      const response = await axios.post("http://localhost:3001/videogame", {
+      const response = await axios.post("/videogame", {
         ...input,
         platforms,
         genres,

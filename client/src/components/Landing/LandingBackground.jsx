@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import background1 from "../../images/wallpaper1.jpg";
 import background2 from "../../images/wallpaper2.jpg";
 import background3 from "../../images/wallpaper3.jpg";

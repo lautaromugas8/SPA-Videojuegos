@@ -1,10 +1,12 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setGamesPerPage } from "../../redux/actions";
+import { setGamesPerPage } from "../../redux/actions/gamesOnPageActions";
 import "./Pagination.css";
 
 function Pagination() {
-  const { games, gamesOnPage, filteredGames } = useSelector((state) => state);
+  const { games } = useSelector((state) => state.games);
+  const { gamesOnPage, isLoading } = useSelector((state) => state.gamesOnPage);
+  const { filteredGames } = useSelector((state) => state.filteredGames);
   const dispatch = useDispatch();
 
   function handleClick(num) {
@@ -12,24 +14,25 @@ function Pagination() {
     else dispatch(setGamesPerPage(num, games));
   }
 
-  if (gamesOnPage.length) {
-    return (
-      <div
-        className={
-          gamesOnPage[0].length === 15 || filteredGames.length > 15
-            ? "pagination"
-            : "nopagination"
-        }
-      >
-        <button onClick={() => handleClick(1)}>1</button>
-        <button onClick={() => handleClick(2)}>2</button>
-        <button onClick={() => handleClick(3)}>3</button>
-        <button onClick={() => handleClick(4)}>4</button>
-        <button onClick={() => handleClick(5)}>5</button>
-        <button onClick={() => handleClick(6)}>6</button>
-      </div>
-    );
-  } else return <div></div>;
+  if (isLoading) {
+    return <div></div>;
+  }
+
+  return (
+    <div
+      className={
+        gamesOnPage.length === 15 || filteredGames.length > 15
+          ? "pagination"
+          : "nopagination"
+      }
+    >
+      {[1, 2, 3, 4, 5, 6].map((num) => (
+        <button key={num} onClick={() => handleClick(num)}>
+          {num}
+        </button>
+      ))}
+    </div>
+  );
 }
 
 export default Pagination;

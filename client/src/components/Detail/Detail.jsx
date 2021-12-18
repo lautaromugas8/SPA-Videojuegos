@@ -1,17 +1,18 @@
-import React, { useEffect } from "react";
+import * as React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { resetFilteredGames } from "../../redux/actions/filteredGamesActions";
 import {
-  detailUnmount,
   getGameDetail,
-  resetFilteredGames,
-} from "../../redux/actions/index";
+  detailUnmount,
+} from "../../redux/actions/gameDetailActions";
 import defaultImage from "../../images/default-placeholder.png";
 import "./Detail.css";
 
 function Detail() {
   const dispatch = useDispatch();
-  const { gameDetail, games } = useSelector((state) => state);
+  const { games } = useSelector((state) => state.games);
+  const { gameDetail, isLoading } = useSelector((state) => state.gameDetail);
   const { id } = useParams();
   let {
     background_image,
@@ -22,6 +23,7 @@ function Detail() {
     rating,
     released,
   } = gameDetail;
+  console.log(gameDetail, isLoading);
 
   if (!rating) {
     rating = "";
@@ -31,10 +33,16 @@ function Detail() {
     released = "Aún no hay fecha";
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     dispatch(getGameDetail(id));
+    return () => {
+      dispatch(detailUnmount());
+    };
+  }, [dispatch, id]);
+
+  React.useEffect(() => {
     dispatch(resetFilteredGames());
-    games[0].sort((a, b) => {
+    games.sort((a, b) => {
       const ar = a.hasOwnProperty("added"),
         br = b.hasOwnProperty("added");
       if (ar && br) {
@@ -42,15 +50,16 @@ function Detail() {
       }
       return ar ? 1 : br ? -1 : 0;
     });
-    return () => dispatch(detailUnmount());
-  }, [dispatch, id, games]);
+  }, [dispatch, games]);
 
-  if (Object.keys(gameDetail).length) {
+  if (isLoading) {
+    return <div className="loading"></div>;
+  } else
     return (
       <div className="detail-container">
         <div className="detail-title">
           <p>
-            {name.replace(/-/g, " ")} ({`${rating}⭐`})
+            {name?.replace(/-/g, " ")} ({`${rating}⭐`})
           </p>
         </div>
         <div>
@@ -59,7 +68,7 @@ function Detail() {
         <div>
           <p>
             Genero(s):
-            {genres.map((g, index) =>
+            {genres?.map((g, index) =>
               index === genres.length - 1 ? g.name : " " + g.name + ", "
             )}
           </p>
@@ -93,9 +102,6 @@ function Detail() {
         </div>
       </div>
     );
-  } else {
-    return <div></div>;
-  }
 }
 
 export default Detail;

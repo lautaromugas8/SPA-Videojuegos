@@ -1,29 +1,29 @@
-import React, { useEffect } from "react";
+import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setGamesPerPage } from "../../redux/actions";
+import { setGamesPerPage } from "../../redux/actions/gamesOnPageActions";
 import Game from "./Game";
 import "./GameList.css";
 
 function GameList() {
-  const { games, gamesOnPage } = useSelector((state) => state);
+  const { games } = useSelector((state) => state.games);
+  const { gamesOnPage, isLoading } = useSelector((state) => state.gamesOnPage);
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  React.useEffect(() => {
     dispatch(setGamesPerPage(1, games));
-    console.log("page 1");
   }, [dispatch, games]);
 
-  if (gamesOnPage.length) {
-    return (
-      <div className="games-list">
-        {gamesOnPage[0].map((g) => (
-          <Game props={g} key={g.id} />
-        ))}
-      </div>
-    );
-  } else {
+  if (isLoading) {
     return <div className="loading"></div>;
   }
+
+  return (
+    <div className="games-list">
+      {gamesOnPage.map((g) => (
+        <Game props={g} key={g.id} />
+      ))}
+    </div>
+  );
 }
 
 export default GameList;

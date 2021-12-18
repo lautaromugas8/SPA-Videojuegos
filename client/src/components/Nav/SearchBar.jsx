@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import * as React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "./SearchBar.css";
-import { searchGame } from "../../redux/actions";
+import { searchGame } from "../../redux/actions/gamesOnPageActions";
 
 function SearchBar() {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = React.useState("");
   const dispatch = useDispatch();
   const history = useHistory();
 
