@@ -9,7 +9,7 @@ let sequelize;
 if (process.env.NODE_ENV === "production") {
   sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
     dialect: "postgres",
-    host: DB_HOST,
+    // host: DB_HOST,
     // port: 5432,
     // pool: {
     //   max: 3,
