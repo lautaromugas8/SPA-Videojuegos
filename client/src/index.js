@@ -13,7 +13,7 @@ axios.defaults.baseURL = "http://localhost:3001";
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename="/SPA-Videojuegos">
         <App />
       </BrowserRouter>
     </Provider>
