@@ -8,7 +8,7 @@ import store from "./redux/store";
 import reportWebVitals from "./reportWebVitals";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:3001";
+axios.defaults.baseURL = "https://guarded-wildwood-51698.herokuapp.com";
 
 ReactDOM.render(
   <React.StrictMode>
