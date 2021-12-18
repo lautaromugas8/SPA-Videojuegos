@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/SPA-Videojuegos/static/css/main.0f026cc8.chunk.css",
-    "main.js": "/SPA-Videojuegos/static/js/main.d3cbb441.chunk.js",
-    "main.js.map": "/SPA-Videojuegos/static/js/main.d3cbb441.chunk.js.map",
+    "main.js": "/SPA-Videojuegos/static/js/main.83cb3e23.chunk.js",
+    "main.js.map": "/SPA-Videojuegos/static/js/main.83cb3e23.chunk.js.map",
     "runtime-main.js": "/SPA-Videojuegos/static/js/runtime-main.ec91594b.js",
     "runtime-main.js.map": "/SPA-Videojuegos/static/js/runtime-main.ec91594b.js.map",
     "static/js/2.8fa0161b.chunk.js": "/SPA-Videojuegos/static/js/2.8fa0161b.chunk.js",
@@ -21,6 +21,6 @@
     "static/js/runtime-main.ec91594b.js",
     "static/js/2.8fa0161b.chunk.js",
     "static/css/main.0f026cc8.chunk.css",
-    "static/js/main.d3cbb441.chunk.js"
+    "static/js/main.83cb3e23.chunk.js"
   ]
 }
