@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "npm i && node index.js",
     "dev": "nodemon -L",
     "test": "mocha --timeout 15000 -w ./tests/**/*.spec.js"
   },
