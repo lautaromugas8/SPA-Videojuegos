@@ -2,6 +2,10 @@
 
 This individual project was a requirement for the [Henry Bootcamp](https://www.soyhenry.com/) approval, where I put into practice what I learned during the Bootcamp, linking a database, with a back-end and a front-end.
 
+<img src="https://github.com/lautaromugas8/lautaromugas8/blob/main/images/PI-Videogames-main.jpg" />
+
+<a href="https://lautaromugas8.github.io/SPA-Videojuegos/" target="_blank">🌐 Demo</a> | <a href="https://github.com/lautaromugas8/SPA-Videojuegos" target="_blank"> 📂 Code</a>
+
 ### Built With
 
 ![](https://camo.githubusercontent.com/2fad14d202b24de54ef28fb28fc41b3fe661fc22ca72ab6045ed280d277bb536/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d48544d4c352d4533344632363f7374796c653d666c6174266c6f676f3d68746d6c35266c6f676f436f6c6f723d7768697465)
