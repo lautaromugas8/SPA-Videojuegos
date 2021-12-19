@@ -7,7 +7,7 @@
     "start": "node index.js",
     "dev": "nodemon -L",
     "test": "mocha --timeout 15000 -w ./tests/**/*.spec.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && cd .. && npm install --prefix client && npm run deploy --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run deploy --prefix client"
   },
   "author": "Henry",
   "license": "ISC",
