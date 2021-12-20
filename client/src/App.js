@@ -1,6 +1,6 @@
 import Landing from "./components/Landing/Landing";
 import Home from "./components/Home/Home";
-import { Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav/Nav";
 import Detail from "./components/Detail/Detail";
 import { useEffect } from "react";
@@ -19,23 +19,36 @@ function App() {
 
   return (
     <div className="App">
-      <Switch>
-        <Route path="/home/add">
-          <Nav />
-          <AddGameForm />
-        </Route>
-        <Route path="/home/game/:id">
-          <Nav />
-          <Detail />
-        </Route>
-        <Route path="/home">
-          <Nav />
-          <Home />
-        </Route>
-        <Route path="/">
-          <Landing />
-        </Route>
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route
+          path="/home"
+          element={
+            <>
+              <Nav />
+              <Home />
+            </>
+          }
+        />
+        <Route
+          path="/home/add"
+          element={
+            <>
+              <Nav />
+              <AddGameForm />
+            </>
+          }
+        />
+        <Route
+          path="/home/game/:id"
+          element={
+            <>
+              <Nav />
+              <Detail />
+            </>
+          }
+        />
+      </Routes>
     </div>
   );
 }

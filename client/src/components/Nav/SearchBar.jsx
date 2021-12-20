@@ -1,13 +1,13 @@
 import * as React from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./SearchBar.css";
 import { searchGame } from "../../redux/actions/gamesOnPageActions";
 
 function SearchBar() {
   const [inputValue, setInputValue] = React.useState("");
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -16,7 +16,7 @@ function SearchBar() {
       document.getElementsByClassName("pagination")[0].className =
         "nopagination";
     }
-    history.push("/home");
+    navigate("/home");
     setInputValue("");
   }
 

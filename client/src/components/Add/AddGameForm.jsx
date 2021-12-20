@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import "./AddGameForm.css";
@@ -16,7 +16,7 @@ function AddGameForm() {
   const [platforms, setPlatforms] = React.useState([]);
   const [genres, setGenres] = React.useState([]);
   const [isPending, setIsPending] = React.useState(false);
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   function selectPlatforms(e) {
@@ -54,7 +54,7 @@ function AddGameForm() {
       setIsPending(false);
       dispatch(getAllGames());
       alert(response.data);
-      history.go(0);
+      navigate(0);
     } catch (error) {
       alert(error);
     }

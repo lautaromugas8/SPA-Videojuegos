@@ -23,7 +23,6 @@ function Detail() {
     rating,
     released,
   } = gameDetail;
-  console.log(gameDetail, isLoading);
 
   if (!rating) {
     rating = "";

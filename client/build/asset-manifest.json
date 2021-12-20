@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/SPA-Videojuegos/static/css/main.0f026cc8.chunk.css",
-    "main.js": "/SPA-Videojuegos/static/js/main.13cd3970.chunk.js",
-    "main.js.map": "/SPA-Videojuegos/static/js/main.13cd3970.chunk.js.map",
-    "runtime-main.js": "/SPA-Videojuegos/static/js/runtime-main.401eaa48.js",
-    "runtime-main.js.map": "/SPA-Videojuegos/static/js/runtime-main.401eaa48.js.map",
-    "static/js/2.5030bb5e.chunk.js": "/SPA-Videojuegos/static/js/2.5030bb5e.chunk.js",
-    "static/js/2.5030bb5e.chunk.js.map": "/SPA-Videojuegos/static/js/2.5030bb5e.chunk.js.map",
-    "static/js/3.f8ae84ca.chunk.js": "/SPA-Videojuegos/static/js/3.f8ae84ca.chunk.js",
-    "static/js/3.f8ae84ca.chunk.js.map": "/SPA-Videojuegos/static/js/3.f8ae84ca.chunk.js.map",
+    "main.js": "/SPA-Videojuegos/static/js/main.13354b6b.chunk.js",
+    "main.js.map": "/SPA-Videojuegos/static/js/main.13354b6b.chunk.js.map",
+    "runtime-main.js": "/SPA-Videojuegos/static/js/runtime-main.adaca39a.js",
+    "runtime-main.js.map": "/SPA-Videojuegos/static/js/runtime-main.adaca39a.js.map",
+    "static/js/2.80fc3817.chunk.js": "/SPA-Videojuegos/static/js/2.80fc3817.chunk.js",
+    "static/js/2.80fc3817.chunk.js.map": "/SPA-Videojuegos/static/js/2.80fc3817.chunk.js.map",
+    "static/js/3.499e1417.chunk.js": "/SPA-Videojuegos/static/js/3.499e1417.chunk.js",
+    "static/js/3.499e1417.chunk.js.map": "/SPA-Videojuegos/static/js/3.499e1417.chunk.js.map",
     "index.html": "/SPA-Videojuegos/index.html",
     "static/css/main.0f026cc8.chunk.css.map": "/SPA-Videojuegos/static/css/main.0f026cc8.chunk.css.map",
-    "static/js/2.5030bb5e.chunk.js.LICENSE.txt": "/SPA-Videojuegos/static/js/2.5030bb5e.chunk.js.LICENSE.txt",
+    "static/js/2.80fc3817.chunk.js.LICENSE.txt": "/SPA-Videojuegos/static/js/2.80fc3817.chunk.js.LICENSE.txt",
     "static/media/default-placeholder.6988980f.png": "/SPA-Videojuegos/static/media/default-placeholder.6988980f.png",
     "static/media/index.css": "/SPA-Videojuegos/static/media/joystick2.7774b42f.jpg",
     "static/media/wallpaper1.6e44791f.jpg": "/SPA-Videojuegos/static/media/wallpaper1.6e44791f.jpg",
     "static/media/LandingBackground.css": "/SPA-Videojuegos/static/media/wallpaper5.87599ffb.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.401eaa48.js",
-    "static/js/2.5030bb5e.chunk.js",
+    "static/js/runtime-main.adaca39a.js",
+    "static/js/2.80fc3817.chunk.js",
     "static/css/main.0f026cc8.chunk.css",
-    "static/js/main.13cd3970.chunk.js"
+    "static/js/main.13354b6b.chunk.js"
   ]
 }
