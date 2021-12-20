@@ -2,6 +2,10 @@
 
 This individual project was a requirement for the [Henry Bootcamp](https://www.soyhenry.com/) approval, where I put into practice what I learned during the Bootcamp, linking a database, with a back-end and a front-end.
 
+<img src="https://github.com/lautaromugas8/lautaromugas8/blob/main/images/PI-Videogames-main.jpg" />
+
+<a href="https://lautaromugas8.github.io/SPA-Videojuegos/" target="_blank">🌐 Demo</a> | <a href="https://github.com/lautaromugas8/SPA-Videojuegos" target="_blank"> 📂 Code</a>
+
 ### Built With
 
 ![](https://camo.githubusercontent.com/2fad14d202b24de54ef28fb28fc41b3fe661fc22ca72ab6045ed280d277bb536/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d48544d4c352d4533344632363f7374796c653d666c6174266c6f676f3d68746d6c35266c6f676f436f6c6f723d7768697465)
@@ -13,3 +17,4 @@ This individual project was a requirement for the [Henry Bootcamp](https://www.s
 ![](https://camo.githubusercontent.com/86eb281eec8870ab30350dca5f4e4776a5b3d98c767dd9328b94e3200a9f5a29/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d506f737467726553514c2d3331363438433f7374796c653d666c6174266c6f676f3d706f737467726573716c266c6f676f436f6c6f723d464646464646)
 ![](https://camo.githubusercontent.com/08353cdca946413fbc36dbf065443f85027df5aea22b204b4b30e2e4635721c1/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d53657175656c697a652d3339394146333f7374796c653d666c6174266c6f676f3d73657175656c697a65266c6f676f436f6c6f723d464646464646)
 ![](https://camo.githubusercontent.com/e6827ddacb39b17e677eaffdae6995da1cc09076e4d50f2b816d2758873f438c/687474703a2f2f696d672e736869656c64732e696f2f62616467652f2d4769746875622d3030303030303f7374796c653d666c6174266c6f676f3d676974687562266c6f676f436f6c6f723d464646464646)
+![](https://camo.githubusercontent.com/8211a57a9b9b05c9118ee21fea5ff1789d60b6fabbf6bb96caac38fbc12d9032/687474703a2f2f696d672e736869656c64732e696f2f62616467652f2d4865726f6b752d3433303039383f7374796c653d666c6174266c6f676f3d6865726f6b75266c6f676f436f6c6f723d7768697465)
