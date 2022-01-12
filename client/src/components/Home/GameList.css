@@ -13,3 +13,15 @@
 .games-list a {
   text-decoration: none;
 }
+
+@media (max-width: 768px) {
+  .games-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 425px) {
+  .games-list {
+    grid-template-columns: 1fr;
+  }
+}

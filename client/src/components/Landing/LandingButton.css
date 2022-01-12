@@ -1,6 +1,7 @@
 .button {
   top: 50%;
-  left: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   position: absolute;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: x-large;

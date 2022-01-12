@@ -11,7 +11,8 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
+// axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
+axios.defaults.baseURL = "https://guarded-wildwood-51698.herokuapp.com/";
 
 ReactDOM.render(
   <React.StrictMode>

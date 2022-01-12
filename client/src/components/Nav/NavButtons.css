@@ -20,3 +20,11 @@
   background-color: #111111;
   text-decoration: underline;
 }
+
+@media (max-width: 425px) {
+  .nav-buttons {
+    width: 100%;
+    margin-bottom: 10px;
+    justify-content: space-evenly;
+  }
+}

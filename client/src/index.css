@@ -38,3 +38,9 @@ code {
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 425px) {
+  html {
+    background-image: url("./images/joytisckphone.jpg");
+  }
+}
