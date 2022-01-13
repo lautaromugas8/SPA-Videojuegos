@@ -1,31 +1,28 @@
 {
   "files": {
-    "main.css": "/SPA-Videojuegos/static/css/main.70581dc0.chunk.css",
-    "main.js": "/SPA-Videojuegos/static/js/main.e03de964.chunk.js",
-    "main.js.map": "/SPA-Videojuegos/static/js/main.e03de964.chunk.js.map",
-    "runtime-main.js": "/SPA-Videojuegos/static/js/runtime-main.e21d5672.js",
-    "runtime-main.js.map": "/SPA-Videojuegos/static/js/runtime-main.e21d5672.js.map",
-    "static/js/2.fa8a1a34.chunk.js": "/SPA-Videojuegos/static/js/2.fa8a1a34.chunk.js",
-    "static/js/2.fa8a1a34.chunk.js.map": "/SPA-Videojuegos/static/js/2.fa8a1a34.chunk.js.map",
-    "static/js/3.b9b7aa4b.chunk.js": "/SPA-Videojuegos/static/js/3.b9b7aa4b.chunk.js",
-    "static/js/3.b9b7aa4b.chunk.js.map": "/SPA-Videojuegos/static/js/3.b9b7aa4b.chunk.js.map",
+    "main.css": "/SPA-Videojuegos/static/css/main.b0d84440.css",
+    "main.js": "/SPA-Videojuegos/static/js/main.f3aeb65d.js",
+    "static/js/377.b33aecdb.chunk.js": "/SPA-Videojuegos/static/js/377.b33aecdb.chunk.js",
+    "static/media/phonewallpaper3.png": "/SPA-Videojuegos/static/media/phonewallpaper3.962a80a3ca0cd3902de2.png",
+    "static/media/wallpaper1.jpg": "/SPA-Videojuegos/static/media/wallpaper1.6e44791f583fac4ec7f1.jpg",
+    "static/media/wallpaper5.jpg": "/SPA-Videojuegos/static/media/wallpaper5.87599ffbcc6334f858a6.jpg",
+    "static/media/wallpaper4.jpg": "/SPA-Videojuegos/static/media/wallpaper4.60239b3021a0eaf5973b.jpg",
+    "static/media/wallpaper2.jpg": "/SPA-Videojuegos/static/media/wallpaper2.1a534748d01dde6ccf3b.jpg",
+    "static/media/wallpaper3.jpg": "/SPA-Videojuegos/static/media/wallpaper3.7be2afb3255d5654f144.jpg",
+    "static/media/phonewallpaper4.jpg": "/SPA-Videojuegos/static/media/phonewallpaper4.51f6cbb251c92289fcf2.jpg",
+    "static/media/phonewallpaper5.jpg": "/SPA-Videojuegos/static/media/phonewallpaper5.5496953bad03fc991273.jpg",
+    "static/media/phonewallpaper2.jpg": "/SPA-Videojuegos/static/media/phonewallpaper2.227b7a862c7abb7f7a55.jpg",
+    "static/media/phonewallpaper1.jpg": "/SPA-Videojuegos/static/media/phonewallpaper1.b991af9b69b301d2fca4.jpg",
+    "static/media/joystick2.jpg": "/SPA-Videojuegos/static/media/joystick2.7774b42fa7af8cc9809c.jpg",
+    "static/media/joytisckphone.jpg": "/SPA-Videojuegos/static/media/joytisckphone.273afbac775f40b905de.jpg",
+    "static/media/default-placeholder.png": "/SPA-Videojuegos/static/media/default-placeholder.6988980f46d4055ce61b.png",
     "index.html": "/SPA-Videojuegos/index.html",
-    "static/css/main.70581dc0.chunk.css.map": "/SPA-Videojuegos/static/css/main.70581dc0.chunk.css.map",
-    "static/js/2.fa8a1a34.chunk.js.LICENSE.txt": "/SPA-Videojuegos/static/js/2.fa8a1a34.chunk.js.LICENSE.txt",
-    "static/media/default-placeholder.6988980f.png": "/SPA-Videojuegos/static/media/default-placeholder.6988980f.png",
-    "static/media/index.css": "/SPA-Videojuegos/static/media/joytisckphone.273afbac.jpg",
-    "static/media/phonewallpaper1.b991af9b.jpg": "/SPA-Videojuegos/static/media/phonewallpaper1.b991af9b.jpg",
-    "static/media/phonewallpaper2.227b7a86.jpg": "/SPA-Videojuegos/static/media/phonewallpaper2.227b7a86.jpg",
-    "static/media/phonewallpaper3.962a80a3.png": "/SPA-Videojuegos/static/media/phonewallpaper3.962a80a3.png",
-    "static/media/phonewallpaper4.51f6cbb2.jpg": "/SPA-Videojuegos/static/media/phonewallpaper4.51f6cbb2.jpg",
-    "static/media/phonewallpaper5.5496953b.jpg": "/SPA-Videojuegos/static/media/phonewallpaper5.5496953b.jpg",
-    "static/media/wallpaper1.6e44791f.jpg": "/SPA-Videojuegos/static/media/wallpaper1.6e44791f.jpg",
-    "static/media/LandingBackground.css": "/SPA-Videojuegos/static/media/wallpaper5.87599ffb.jpg"
+    "main.b0d84440.css.map": "/SPA-Videojuegos/static/css/main.b0d84440.css.map",
+    "main.f3aeb65d.js.map": "/SPA-Videojuegos/static/js/main.f3aeb65d.js.map",
+    "377.b33aecdb.chunk.js.map": "/SPA-Videojuegos/static/js/377.b33aecdb.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.e21d5672.js",
-    "static/js/2.fa8a1a34.chunk.js",
-    "static/css/main.70581dc0.chunk.css",
-    "static/js/main.e03de964.chunk.js"
+    "static/css/main.b0d84440.css",
+    "static/js/main.f3aeb65d.js"
   ]
 }
