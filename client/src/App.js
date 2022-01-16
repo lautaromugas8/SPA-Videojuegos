@@ -8,6 +8,9 @@ import { useDispatch } from "react-redux";
 import { getAllGames } from "./redux/actions/gamesActions";
 import AddGameForm from "./components/Add/AddGameForm";
 import { getAllGenres } from "./redux/actions/genresActions";
+import MobileNav from "./components/MobileNav/MobileNav";
+
+const mq = window.matchMedia("(max-width: 425px)");
 
 function App() {
   const dispatch = useDispatch();
@@ -25,7 +28,7 @@ function App() {
           path="/home"
           element={
             <>
-              <Nav />
+              {mq.matches ? <MobileNav /> : <Nav />}
               <Home />
             </>
           }
@@ -34,7 +37,7 @@ function App() {
           path="/home/add"
           element={
             <>
-              <Nav />
+              {mq.matches ? <MobileNav /> : <Nav />}
               <AddGameForm />
             </>
           }
@@ -43,7 +46,7 @@ function App() {
           path="/home/game/:id"
           element={
             <>
-              <Nav />
+              {mq.matches ? <MobileNav /> : <Nav />}
               <Detail />
             </>
           }

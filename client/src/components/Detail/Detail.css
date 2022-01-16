@@ -50,3 +50,10 @@
   height: 150px;
   width: 150px;
 }
+
+@media (max-width: 425px) {
+  .detail-container {
+    grid-template-columns: 1fr;
+    margin-top: 30px;
+  }
+}

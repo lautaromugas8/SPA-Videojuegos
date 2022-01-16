@@ -16,12 +16,16 @@
 
 @media (max-width: 768px) {
   .games-list {
+    width: 100%;
     grid-template-columns: 1fr 1fr;
+    padding: 0;
   }
 }
 
 @media (max-width: 425px) {
   .games-list {
+    width: 100%;
     grid-template-columns: 1fr;
+    padding: 0;
   }
 }
