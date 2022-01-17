@@ -19,3 +19,12 @@
 .sidebar li select:hover {
   cursor: pointer;
 }
+
+@media (max-width: 425px) {
+  .sidebar > ul {
+    padding-left: 1rem;
+  }
+  .sidebar ul li {
+    border-bottom: 1px solid lightyellow;
+  }
+}

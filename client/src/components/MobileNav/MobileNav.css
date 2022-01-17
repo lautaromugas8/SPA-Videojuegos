@@ -2,12 +2,13 @@
   text-decoration: none;
   color: lightyellow;
   opacity: 1;
-  font-family: "work sans", sans serif;
+  font-family: "Noto Sans Display", sans-serif;
   font-size: 1.5em;
   font-weight: 400;
   transition: 200ms;
   text-decoration: underline;
 }
+
 #menu-mobile a:hover {
   opacity: 0.5;
 }
@@ -33,7 +34,7 @@
   user-select: none;
 }
 
-#menuToggleMobile input {
+#menuToggleMobile > input {
   display: flex;
   width: 40px;
   height: 32px;

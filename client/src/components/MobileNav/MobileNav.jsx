@@ -1,9 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import SearchBar from "../Nav/SearchBar";
+import SideBar from "../Home/Sidebar";
 import "./MobileNav.css";
 
 export default function MobileNav() {
+  const { pathname } = useLocation();
+
   return (
     <nav id="nav-mobile" role="navigation">
       <div id="menuToggleMobile">
@@ -18,9 +21,32 @@ export default function MobileNav() {
           <Link to="/home/add">
             <li>Crear</li>
           </Link>
-          {/* <div>
+          <span
+            style={{
+              color: "lightyellow",
+              width: "100%",
+              marginTop: "1rem",
+              marginBottom: "1rem",
+            }}
+          />
+          <div>
             <SearchBar />
-          </div> */}
+          </div>
+          {pathname === "/home" ? (
+            <span
+              style={{
+                color: "lightyellow",
+                width: "100%",
+                marginTop: "1rem",
+                marginBottom: "1rem",
+              }}
+            />
+          ) : undefined}
+          {pathname === "/home" ? (
+            <div>
+              <SideBar />
+            </div>
+          ) : undefined}
         </ul>
       </div>
     </nav>
