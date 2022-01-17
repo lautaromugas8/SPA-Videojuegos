@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/SPA-Videojuegos/static/css/main.5e11395c.css",
-    "main.js": "/SPA-Videojuegos/static/js/main.7ac7e612.js",
+    "main.css": "/SPA-Videojuegos/static/css/main.312666c6.css",
+    "main.js": "/SPA-Videojuegos/static/js/main.a1c995f9.js",
     "static/js/377.b33aecdb.chunk.js": "/SPA-Videojuegos/static/js/377.b33aecdb.chunk.js",
     "static/media/phonewallpaper3.png": "/SPA-Videojuegos/static/media/phonewallpaper3.962a80a3ca0cd3902de2.png",
     "static/media/wallpaper1.jpg": "/SPA-Videojuegos/static/media/wallpaper1.6e44791f583fac4ec7f1.jpg",
@@ -17,12 +17,12 @@
     "static/media/joytisckphone.jpg": "/SPA-Videojuegos/static/media/joytisckphone.273afbac775f40b905de.jpg",
     "static/media/default-placeholder.png": "/SPA-Videojuegos/static/media/default-placeholder.6988980f46d4055ce61b.png",
     "index.html": "/SPA-Videojuegos/index.html",
-    "main.5e11395c.css.map": "/SPA-Videojuegos/static/css/main.5e11395c.css.map",
-    "main.7ac7e612.js.map": "/SPA-Videojuegos/static/js/main.7ac7e612.js.map",
+    "main.312666c6.css.map": "/SPA-Videojuegos/static/css/main.312666c6.css.map",
+    "main.a1c995f9.js.map": "/SPA-Videojuegos/static/js/main.a1c995f9.js.map",
     "377.b33aecdb.chunk.js.map": "/SPA-Videojuegos/static/js/377.b33aecdb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5e11395c.css",
-    "static/js/main.7ac7e612.js"
+    "static/css/main.312666c6.css",
+    "static/js/main.a1c995f9.js"
   ]
 }
